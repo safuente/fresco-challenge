@@ -82,7 +82,7 @@ class Step(models.Model):
     description = models.TextField(blank=True)
 
     def __str__(self):
-        return self.name
+        return self.description
 
 
 class Ingredient(models.Model):
@@ -93,9 +93,13 @@ class Ingredient(models.Model):
         return self.name
 
 
+
+
 class IngredientToRecipe(models.Model):
     """Ingredient to recipe relation to manage quantities"""
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.CharField(max_length=50, blank=True, null=True)
     unit = models.CharField(max_length=50, blank=True, null=True)
+
+
