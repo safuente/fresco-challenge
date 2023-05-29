@@ -58,9 +58,7 @@ class Recipe(models.Model):
     cook_time_minutes = models.IntegerField()
     tags = models.ManyToManyField('Tag')
     ingredients = models.ManyToManyField(
-        'Ingredient',
-        through='IngredientToRecipe',
-        through_fields=('recipe', 'ingredient'),
+        'IngredientToRecipe'
     )
     steps = models.ManyToManyField('Step')
 
@@ -97,7 +95,6 @@ class Ingredient(models.Model):
 
 class IngredientToRecipe(models.Model):
     """Ingredient to recipe relation to manage quantities"""
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.CharField(max_length=50, blank=True, null=True)
     unit = models.CharField(max_length=50, blank=True, null=True)
