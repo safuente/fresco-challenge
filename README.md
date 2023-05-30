@@ -15,13 +15,16 @@ Once the command is executed go to the following link http://localhost:8000. You
 in order to test the API
 
 ## Test the API
-1) Once you create the superuser you could access to django admin dashboard in http://localhost:8000/admin with 
-the testing credentials in Makefile in superuser command. Since here superuser could create other users or you 
-have a second option. You can execute the following command to create a test user:
+1) Create a user for testing executing the following command:
 
-    make user
+       make user
 
-2) After that you have to make a post request to http://localhost:8000/api/users/token using the email and password 
+2) Create some test ingredients to be used to create recipes :
+   
+        make ingredients
+
+
+After that you have to make a post request to http://localhost:8000/api/users/token using the email and password 
 with the testing credentials in Makefile in user command.
 This endpoint is going to return a token. 
 
@@ -31,6 +34,20 @@ the following content:
         Token <value_of_the_token_endpoint>
 
 Then close the window. This token is going to be used to request all the endpoint of recipe API
+
+3) You have 4 endpoints for recipes:
+
+         POST: create a recipe
+         UPDATE: update recipe value
+         GET: get the list of recipes for the current user
+         GET DETAIL: get a recipe by id
+
+4) You can check the list of ingredients from the django admin:
+
+      make superuser
+
+After that you can acces to the admin to http://localhost:8000/admin using the email and password 
+with the testing credentials in Makefile in superuser command. Here you can check the ingredients to use in recipe creation
 
 
 ## Other useful commands

@@ -8,7 +8,6 @@ from django.contrib.auth.models import (
     BaseUserManager,
     PermissionsMixin,
 )
-from django.contrib.postgres.fields import ArrayField
 
 
 class UserManager(BaseUserManager):
@@ -91,12 +90,8 @@ class Ingredient(models.Model):
         return self.name
 
 
-
-
 class IngredientToRecipe(models.Model):
     """Ingredient to recipe relation to manage quantities"""
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.CharField(max_length=50, blank=True, null=True)
     unit = models.CharField(max_length=50, blank=True, null=True)
-
-

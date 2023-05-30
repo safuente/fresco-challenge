@@ -31,7 +31,7 @@ pull:
 
 # Run flake8 linting
 lint:
-	$(DOCKER_COMPOSE) run --rm app sh -c "flake8"
+	$(DOCKER_COMPOSE) run --rm app sh -c "flake8 -v"
 
 # Access to container´s shell
 bash:
@@ -52,3 +52,6 @@ superuser:
 # Create test user (only for testing)
 user:
 	$(DOCKER_COMPOSE) run --rm app python manage.py shell -c "from django.contrib.auth import get_user_model; user = get_user_model().objects.create_user('user@fresco.com', 'supersegura')"
+
+ingredients:
+	$(DOCKER_COMPOSE) run --rm app sh -c "python manage.py create_test_ingredients"

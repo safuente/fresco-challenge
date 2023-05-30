@@ -24,7 +24,7 @@ def create_user(**params):
 
 
 def create_ingredient(**params):
-    """Create and return a sample electrocardiogram."""
+    """Create and return a sample ingredient."""
     defaults = {
         'name': 'test_ingredient',
     }
@@ -48,7 +48,7 @@ def create_recipe(user, **params):
     return recipe
 
 
-class PublicElectrocardiogramAPITests(TestCase):
+class PublicRecipeAPITests(TestCase):
     """Test unauthenticated API requests."""
 
     def setUp(self):
@@ -93,9 +93,8 @@ class PrivateRecipeApiTests(TestCase):
             ]
         }
 
-
     def test_create_recipe(self):
-        """Test creating a electrocardiogram."""
+        """Test creating a recipe."""
 
         res = self.client.post(RECIPES_URL, self.payload, format='json')
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
@@ -115,7 +114,6 @@ class PrivateRecipeApiTests(TestCase):
         serializer = RecipeSerializer(recipes, many=True)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
-
 
     def test_recipe_list_limited_to_user(self):
         """Test list of recipes is limited to authenticated user."""

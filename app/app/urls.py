@@ -34,4 +34,3 @@ urlpatterns = [
     path('api/users/', include('users.urls')),
     path('api/', include('recipes.urls'))
 ]
-

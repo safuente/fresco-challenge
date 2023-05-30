@@ -50,5 +50,3 @@ admin.site.register(models.Ingredient)
 admin.site.register(models.Tag)
 admin.site.register(models.Step)
 admin.site.register(models.IngredientToRecipe)
-
-

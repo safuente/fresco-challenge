@@ -2,7 +2,6 @@
 Serializers for recipe APIs
 """
 from rest_framework import serializers
-from django.core.exceptions import ObjectDoesNotExist
 from core.models import (
     Recipe,
     Tag,
@@ -116,11 +115,3 @@ class RecipeSerializer(serializers.ModelSerializer):
 
         instance.save()
         return instance
-
-
-
-class RecipeDetailSerializer(RecipeSerializer):
-    """Serializer for recipe detail view."""
-
-    class Meta(RecipeSerializer.Meta):
-        fields = RecipeSerializer.Meta.fields + ['description']
