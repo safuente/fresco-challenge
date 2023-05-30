@@ -78,21 +78,14 @@ class RecipeSerializer(serializers.ModelSerializer):
 
     def _get_or_create_ingredients(self, ingredients, recipe):
         """Handle getting or creating ingredients as needed."""
-        print(ingredients)
         for i, ingredient in enumerate(ingredients):
             ingredient_obj, created = IngredientToRecipe.objects.get_or_create(
                 **ingredient,
             )
-            print(ingredient_obj)
-            print(created)
-            # IngredientToRecipe.objects.create(recipe=recipe, ingredient=ingredient['ingredient'], quantity=ingredient['quantity'], unit=ingredient['unit'])
             recipe.ingredients.add(ingredient_obj)
-            # ingredients_to_recipe = IngredientToRecipe.objects.create(ingredient=ingredient_obj,  recipe=recipe, quantity=ingredient.quantity, unit=ingredient.unit)
-            # recipe.ingredients.add(ingredients_to_recipe)
 
     def create(self, validated_data):
         """Create a recipe."""
-        print(validated_data)
         tags = validated_data.pop('tags', [])
         ingredients = validated_data.pop('ingredients', [])
         steps = validated_data.pop('steps', [])
