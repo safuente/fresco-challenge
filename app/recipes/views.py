@@ -15,7 +15,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-    http_method_names = ['get', 'post']
+    http_method_names = ['get', 'post', 'put']
 
     def _params_to_ints(self, qs):
         """Convert a list of strings to integers."""
